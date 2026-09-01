@@ -70,9 +70,15 @@ la misma imagen arranca desde cero (p.ej. `docker compose down -v && up`).
 
 ## Integración de proyectos
 
-- **ERP** `maxan-erp/docker-compose.dev.yml` monta `./db/init` → apuntar a `maxan-db/init`.
-- **Auth** `maxan-auth` y **Tienda** `maxan-tienda` ya no traen su `db/` propio: comparten
-  el de aquí.
+Ya aplicada en los 3 proyectos:
+
+- **ERP** `maxan-erp/docker-compose.dev.yml` y `docker-compose.prod.yml` montan
+  `../maxan-db/init:/docker-entrypoint-initdb.d`. Clonar `maxan-db` como proyecto hermano.
+- **Auth** `maxan-auth` y **Tienda** `maxan-tienda`: ya **no** traen `db/` propio; comparten
+  el de aquí. Auth reutiliza `usuarios.sesiones` (en `init/01_usuarios.sql`); Tienda
+  aporta `init/09_tienda.sql` (schema `tienda`).
+- Los `db/` locales de `maxan-erp`, `maxan-auth` y `maxan-tienda` fueron **eliminados**
+  de los repos; el del ERP quedó archivado como referencia en `legacy/`.
 
 ## Intención de `legacy/`
 
