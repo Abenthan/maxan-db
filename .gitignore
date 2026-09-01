@@ -1,0 +1,22 @@
+# Base de datos compartida del ecosistema Maxan
+# Repositorio: github.com/Abenthan/maxan-db
+
+# Contraseñas / secretos
+.env
+.env.*
+!.env.example
+
+# Backups de BD (binarios pg_dump; se regeneran, no se versionan)
+# Mantener backups/ con .gitkeep si se quiere conservar la carpeta.
+backups/*.sql
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Cache del sistema
+__pycache__/
+*.pyc
